@@ -1,0 +1,2 @@
+This is a simple test that the CAR object supplies data as a server. 
+As a server ,it is responsible for the efficiency of computing.

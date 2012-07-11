@@ -1,0 +1,15 @@
+此三个脚本用于test的真机测试
+
+linux环境
+
+1 运行pack-all-test，生成jar-place(在tests根目录下)
+
+windows环境：连接手机，包括烧入系统，下载套件并运行，详见论坛
+2 将生成的jar-place复制到包含有adb.exe的目录下
+3 
+adb shell rm -r /data/test
+adb shell mkdir /data/test
+adb push jar-place /data/test
+4 adb shell
+5 cd /data/test
+6 sh run-all-pack

@@ -1,0 +1,12 @@
+module
+{
+	interface IServer
+	{
+		compute([in] Int32 i, [in]Int32 count, [out] Int64 *o); 
+	}
+		
+	class CServer
+	{
+		interface IServer;
+	}
+}

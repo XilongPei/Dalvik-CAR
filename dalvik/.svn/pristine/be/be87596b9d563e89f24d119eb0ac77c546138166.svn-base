@@ -1,0 +1,19 @@
+#undef isalnum
+#undef isalpha
+#undef isascii
+#undef isblank
+#undef iscntrl
+#undef isdigit
+#undef isgraph
+#undef islower
+#undef isprint
+#undef ispunct
+#undef isspace
+#undef isupper
+#undef isxdigit
+#undef toascii
+#undef tolower
+#undef toupper
+
+#undef new
+#undef delete

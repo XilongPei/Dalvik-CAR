@@ -1,0 +1,22 @@
+module
+{
+	interface ITestBasicType
+	{
+		boolNon([in] Boolean i, [out] Boolean* o);
+		boolAnd([in] Boolean i, [in] Boolean j, [out] Boolean* o);
+		boolOr([in] Boolean i, [in] Boolean j, [out] Boolean* o);
+
+		//charAddOne([in] AChar i, [out] AChar* o);
+		//charCon([in] AChar i, [in] AChar j, [out] String* o);
+
+		strCopy([in] String i, [out] String* o);
+		strCon([in] String i, [in] String j, [out] String* o);
+		//strIndexof([in] String i, [in] Int32 n, [out] AChar* o);
+		strStartwith([in] String i, [in] String j, [out] Boolean* o);
+	}
+		
+	class CTestBasicType
+	{
+		interface ITestBasicType;
+	}
+}

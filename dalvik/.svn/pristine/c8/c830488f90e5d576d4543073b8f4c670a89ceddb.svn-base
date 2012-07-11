@@ -1,0 +1,33 @@
+#!/bin/bash
+#run all the packed test
+#by fw
+#2011-3-16
+
+#mv all the eco files to environment
+mv ./eco-place/*.eco /data/data/com.elastos.runtime/elastos
+
+#run all the jar
+#passed="0"
+#failed="0"
+DEX_DEBUG="-agentlib:jdwp=transport=dt_android_adb,server=y,suspend=y"
+failNames=""
+for i in `ls *.jar`; do
+   echo "$i is testing"
+   if dalvikvm $DEX_DEBUG -cp $i -ea Main; then
+#  passed += $passed + 1
+   else
+#  failed += $failed + 1
+   failNames="$failNames $i"
+   fi
+done
+
+#echo the result
+#echo "passed:"
+#echo  $passed
+#echo "failed:"
+#echo  $failed
+
+for i in $failNames; do
+    echo "$i test failed"
+done
+

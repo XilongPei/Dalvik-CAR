@@ -1,0 +1,59 @@
+module ClockAssembly.eco
+{
+
+    interface IClockAssembly;
+    interface JClockAssemblyEvents;
+    interface JClockAssemblyEventsHandler;
+
+    enum _CClockAssemblyEvent {
+        CClockAssemblySink_JClockAssemblyEventsBegin = 0,
+        CClockAssembly_TimeTick = 1,
+        CClockAssembly_Alarm = 2,
+        CClockAssemblySink_JClockAssemblyEventsEnd = 3,
+        CClockAssemblySink_MaxEvents = 4,
+    }
+
+    interface IClockAssembly {
+        SetTimeTick(
+            [in] Int32 interval);
+
+        SetAlarm();
+    }
+
+    interface JClockAssemblyEvents {
+        TimeTick();
+
+        Alarm();
+    }
+
+    [
+
+    ]
+    interface JClockAssemblyEventsHandler {
+        AddTimeTickCallback(
+            [in] EventHandler handler);
+
+        RemoveTimeTickCallback(
+            [in] EventHandler handler);
+
+        AcquireTimeTickRendezvous(
+            [out] ICallbackRendezvous ** ppRendezvous);
+
+        AddAlarmCallback(
+            [in] EventHandler handler);
+
+        RemoveAlarmCallback(
+            [in] EventHandler handler);
+
+        AcquireAlarmRendezvous(
+            [out] ICallbackRendezvous ** ppRendezvous);
+    }
+
+    [
+
+    ]
+    class CClockAssembly {
+        interface IClockAssembly;
+        callback interface JClockAssemblyEvents;
+    }
+}

@@ -1,0 +1,82 @@
+/*
+ * Copyright (C) 2010 elastos
+ *
+ * package for CAR base datatype
+ */
+
+module com.elastos.runtime
+{
+    IStringBuf {
+        constructor([in] Int32 jniEnv, [in] Int32 jniClz, [in] Int32 jniObj);
+
+        Init(Int32 size);
+
+        AppendStr(String str);
+        AppendSubstr(String str, Int32 offset, Int32 count);
+        AppendC(Char8 c);
+        AppendI(Int32 i);
+        AppendL(Int64 l);
+        AppendD(Double d);
+        AppendB(Boolean b);
+
+        //this function will return a CStringBuf object
+        Clone([out] IStringBuf *sbuf);
+
+        CompareStr(String str, boolean CaseSenitive);
+        CompareStrbuf(StringBuf sbuf, boolean CaseSenitive);
+
+        Concatenate(String str);
+        CopyStr(String str);
+        CopySubstr(String str, Int32 len);
+
+        GetPayload(String *str);
+        GetCapacity([out] Int32 *i);
+        GetLength([out] Int32 *i);
+        GetAvailableSpace([out] Int32 *i);
+        SetLength([in] Int32 i);
+        ToInt32([out] Int32 *i);
+        ToInt64([out] Int64 *l);
+        ToBoolean([out] Boolean *b);
+        ToDouble([out] Double *d);
+        GetCharCount([out] Int32 *i);
+
+    //native ___int GetChar(int index);
+
+        Contains(String str, boolean CaseSenitive);
+        StartWith(String str, boolean CaseSenitive);
+        EndWith(String str, boolean CaseSenitive);
+
+        //---- IndexOf ----
+        IndexOf(Char8 c, boolean CaseSenitive, [out] *i);
+        IndexOfAny(String str, boolean CaseSenitive, [out] *i);
+    //native int IndexOfChar(___int ch, boolean CaseSenitive = 1);
+    //native int IndexOfAnyChar(Char32 *strCharSet, boolean CaseSenitive = 1);
+
+
+        //---- LastIndexOf ----
+        LastIndexOf(Char8 c, boolean CaseSenitive, [out] *i);
+        LastIndexOfAny(String str, boolean CaseSenitive, [out] *i);
+    //native int LastIndexOfChar(___int ch, boolean CaseSenitive = 1);
+    //native int LastIndexOfAnyChar(Char32 *strCharSet, boolean CaseSenitive = 1);
+
+        //---- Substring ----
+        Substring(Int32 start, StringBuf sub, String *str);
+        Substring(Int32 start, Int32 len, StringBuf sub, String *str);
+
+
+        ToLowerCase();
+        ToUpperCase();
+        TrimStart();
+        TrimEnd();
+        Trim();
+
+        PadLeft(Int32 width);
+        PadRight(Int32 width);
+        PadLeft2(Int32 width, Char8 ch);
+        PadRight2(Int32 width, Char8 ch);
+    }
+
+    class CStringBuf {
+        interface IStringBuf;
+    }
+}

@@ -1,0 +1,26 @@
+This file describes how to use gdbserver&gdb to debug Dalvik.
+
+(1)start a emulator   
+
+(2)push the files(dalvikvm,libdvm and core.jar without optimization) into the emulator 
+    adb push $ANDROID_PRODUCT_OUT/symbols/system/bin/dalvikvm /system/bin
+    adb push $ANDROID_PRODUCT_OUT/system/lib/libdvm.so /system/lib
+    adb push $ANDROID_PRODUCT_OUT/system/framework/core.jar /system/framework
+
+(3)setup a gdbserver
+    adb shell 
+    cd data    
+    gdbserver :5678 /system/bin/dalvikvm -Xbootclasspath:/system/framework/core.jar -classpath /data/test.jar Main
+
+
+(4)set environment variables
+    export PATH=$PATH:$ANDROID_HOME/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin
+
+(5)remote debug in linux shell
+    adb forward tcp:1234 tcp:5678 (forward port)
+    arm-eabi-gdb $ANDROID_HOME/out/target/product/generic/symbols/system/bin/dalvikvm   
+        set solib-absolute-prefix /home/chenhao/tuhuolong/mydroid_Donut/out/target/product/generic/symbols/
+        set solib-search-path /home/chenhao/tuhuolong/mydroid_Donut/out/target/product/generic/symbols/system/lib/
+        target remote :1234  (remote link target-machine)
+
+        b Main.c:212 (start debug)  

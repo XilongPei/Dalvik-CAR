@@ -1,0 +1,28 @@
+module InheritsDemo.eco
+{
+
+    interface IFoo;
+    interface IBar;
+
+    interface IFoo {
+        Foo();
+    }
+
+    interface IBar {
+        Bar();
+    }
+
+    [
+
+    ]
+    class CFoo {
+        virtual interface IFoo;
+    }
+
+    [
+
+    ]
+    class CBar : CFoo {
+        interface IBar;
+    }
+}

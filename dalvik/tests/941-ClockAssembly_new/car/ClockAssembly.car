@@ -1,0 +1,18 @@
+module
+{
+    interface IClockAssembly {
+        SetTimeTick([in] Int32 interval);
+		SetAlarm();
+    }
+
+    callbacks JClockAssemblyEvents {
+		TimeTick();
+		Alarm();
+	}
+	
+	class CClockAssembly {
+		interface IClockAssembly;
+		callbacks JClockAssemblyEvents;
+	}
+}
+

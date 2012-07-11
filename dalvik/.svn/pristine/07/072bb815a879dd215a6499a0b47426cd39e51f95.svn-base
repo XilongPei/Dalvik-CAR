@@ -1,0 +1,18 @@
+module StrBuf.eco
+{
+
+    interface IStrBuf;
+
+    interface IStrBuf {
+        addStr(
+            [in] String i, 
+            [out] StringBuf o);
+    }
+
+    [
+
+    ]
+    class CStrBuf {
+        interface IStrBuf;
+    }
+}

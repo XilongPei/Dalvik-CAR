@@ -1,0 +1,13 @@
+TARGET_NAME= Server
+TARGET_TYPE= eco
+
+SOURCES = Server.car
+SOURCES += CServer.cpp
+
+ELASTOS_LIBS= elastos.lib
+ELASTOS_LIBS+= ElCRuntime.lib
+ELASTOS_LIBS+= ElUtilities.lib
+
+LIBRARIES= $(XDK_USER_LIB)/Elastos.Runtime.CarRuntime.lib
+LIBRARIES+= $(XDK_LIB_PATH)/Elastos.Runtime.lib
+LIBRARIES+= $(XDK_LIB_PATH)/Elastos.Runtime.ClassLibrary.lib

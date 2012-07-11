@@ -1,0 +1,44 @@
+module TestNumber.eco
+{
+
+    interface ITestNumber;
+
+    interface ITestNumber {
+        addByte(
+            [in] Byte i, 
+            [in] Byte j, 
+            [out] Byte * o);
+
+        addShort(
+            [in] Int16 i, 
+            [in] Int16 j, 
+            [out] Int16 * o);
+
+        addInt(
+            [in] Int32 i, 
+            [in] Int32 j, 
+            [out] Int32 * o);
+
+        addLong(
+            [in] Int64 i, 
+            [in] Int64 j, 
+            [out] Int64 * o);
+
+        addFloat(
+            [in] Float i, 
+            [in] Float j, 
+            [out] Float * o);
+
+        addDouble(
+            [in] Double i, 
+            [in] Double j, 
+            [out] Double * o);
+    }
+
+    [
+
+    ]
+    class CTestNumber {
+        interface ITestNumber;
+    }
+}

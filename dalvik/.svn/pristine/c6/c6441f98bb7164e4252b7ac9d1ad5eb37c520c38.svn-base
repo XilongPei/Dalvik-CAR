@@ -1,0 +1,30 @@
+#!/bin/bash
+#pack the test
+#by fw
+#2011-3-16
+cd $1
+jarfile="$1"
+jarfile="${jarfile%/}"
+rm -r classes 2>/dev/null
+mkdir classes
+   
+if [ -d ./src -a -r ./src ]; then
+   
+   if javac -bootclasspath $ANDROID_PRODUCT_OUT/../../common/obj/JAVA_LIBRARIES/core_intermediates/classes.jar -d ./classes `find ./src -name '*.java'` ;then  
+      dx -JXmx256m --debug --dex --dump-to=classes.lst --output=classes.dex --dump-width=1000 classes
+      zip "$jarfile".jar classes.dex
+      rm -r classes
+      rm classes.dex
+      mv "$jarfile".jar ../jar-place
+      if [ -d ../jar-place/eco-place ]; then  
+        cp `find . -name "*.eco"` ../jar-place/eco-place/ 2>/dev/null
+      else 
+        mkdir ../jar-place/eco-place
+        cp `find . -name "*.eco"` ../jar-place/eco-place/ 2>/dev/null
+      fi
+      exit 0
+  else
+      exit 1
+  fi
+fi
+  

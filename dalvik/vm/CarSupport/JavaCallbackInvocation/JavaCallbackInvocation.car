@@ -1,0 +1,10 @@
+module
+{
+
+	 [private, local]
+	 class CJavaCallbackInvocation
+	 {
+	 		interface ICallbackInvocation;
+	 		constructor([in] PVoid env, [in] PVoid self);
+	 }
+}

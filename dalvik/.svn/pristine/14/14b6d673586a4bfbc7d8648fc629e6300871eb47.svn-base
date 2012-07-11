@@ -1,0 +1,16 @@
+module
+{
+    interface IBuilding {
+        CatchFire();     
+    }
+
+    callbacks JFireAlarmRing { 
+        EmployeeEvent();     
+        FiremanEvent();      
+    }
+
+    class CBuilding {
+        interface IBuilding;
+        callbacks JFireAlarmRing;    
+    }
+}

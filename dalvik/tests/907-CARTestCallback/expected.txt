@@ -1,0 +1,1 @@
+We expecte that when a function is invoked, the other function which has been registed will be invoked corespondingly.

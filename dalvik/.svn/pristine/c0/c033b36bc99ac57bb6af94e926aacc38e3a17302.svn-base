@@ -1,0 +1,17 @@
+module
+{
+    	interface IFoo {
+    		Foo();
+    	}
+    
+    	interface IBar  {
+        		Bar();
+    	}
+    	class CFoo {
+        		virtual interface IFoo;
+    		}
+
+    	class CBar inherits CFoo {
+        		interface IBar;
+    	}
+}

@@ -1,0 +1,42 @@
+module TestBasicType.eco
+{
+
+    interface ITestBasicType;
+
+    interface ITestBasicType {
+        boolNon(
+            [in] Boolean i, 
+            [out] Boolean * o);
+
+        boolAnd(
+            [in] Boolean i, 
+            [in] Boolean j, 
+            [out] Boolean * o);
+
+        boolOr(
+            [in] Boolean i, 
+            [in] Boolean j, 
+            [out] Boolean * o);
+
+        strCopy(
+            [in] String i, 
+            [out] String * o);
+
+        strCon(
+            [in] String i, 
+            [in] String j, 
+            [out] String * o);
+
+        strStartwith(
+            [in] String i, 
+            [in] String j, 
+            [out] Boolean * o);
+    }
+
+    [
+
+    ]
+    class CTestBasicType {
+        interface ITestBasicType;
+    }
+}

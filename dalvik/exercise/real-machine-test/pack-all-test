@@ -1,0 +1,44 @@
+#!/bin/bash
+#pack all the test
+#
+# Set up prog to be the path of this script, including following symlinks,
+# and set up progdir to be the fully-qualified pathname of its directory.
+
+
+cd ../../tests/
+
+#the place to hold the .jar
+rm -rf ./jar-place >/dev/null
+mkdir ./jar-place
+#the place to hold .eco
+mkdir ./jar-place/eco-place >/dev/null
+
+#packed all test
+passed=0
+failed=0
+for i in *; do
+       
+       if [ -d "$i" -a -r "$i" -a -r "${i}/info.txt" ]; then
+         echo "$i now packing  ..."
+         sh ../exercise/real-machine-test/pack-test "$i"
+        if [ "$?" = "0" ]; then
+            ((passed += 1))
+        else
+            ((failed += 1))
+             failNames="$failNames $i"
+        fi
+      fi
+done
+
+#echo the result
+echo "passed: $passed"
+echo "failed: $failed"
+
+for i in $failNames; do
+    echo "pack failed: $i"
+done
+#copy pack-all-run to our place
+cp ../exercise/real-machine-test/run-all-pack ./jar-place
+
+
+

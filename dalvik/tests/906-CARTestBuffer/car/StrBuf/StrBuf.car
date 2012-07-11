@@ -1,0 +1,12 @@
+module
+{
+	interface IStrBuf
+	{
+		addStr([in]String i, [out]StringBuf<> o);
+	}
+		
+	class CStrBuf
+	{
+		interface IStrBuf;
+	}
+}

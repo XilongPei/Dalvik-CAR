@@ -1,0 +1,56 @@
+module TestCallback.eco
+{
+
+    interface IBuilding;
+    interface JFireAlarmRing;
+    interface JFireAlarmRingHandler;
+
+    enum _CBuildingEvent {
+        CBuildingSink_JFireAlarmRingBegin = 0,
+        CBuilding_EmployeeEvent = 1,
+        CBuilding_FiremanEvent = 2,
+        CBuildingSink_JFireAlarmRingEnd = 3,
+        CBuildingSink_MaxEvents = 4,
+    }
+
+    interface IBuilding {
+        CatchFire();
+    }
+
+    interface JFireAlarmRing {
+        EmployeeEvent();
+
+        FiremanEvent();
+    }
+
+    [
+
+    ]
+    interface JFireAlarmRingHandler {
+        AddEmployeeEventCallback(
+            [in] EventHandler handler);
+
+        RemoveEmployeeEventCallback(
+            [in] EventHandler handler);
+
+        AcquireEmployeeEventRendezvous(
+            [out] ICallbackRendezvous ** ppRendezvous);
+
+        AddFiremanEventCallback(
+            [in] EventHandler handler);
+
+        RemoveFiremanEventCallback(
+            [in] EventHandler handler);
+
+        AcquireFiremanEventRendezvous(
+            [out] ICallbackRendezvous ** ppRendezvous);
+    }
+
+    [
+
+    ]
+    class CBuilding {
+        interface IBuilding;
+        callback interface JFireAlarmRing;
+    }
+}
